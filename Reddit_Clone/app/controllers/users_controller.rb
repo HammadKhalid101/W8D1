@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save && log_in(@user)
       redirect_to users_url
     else
-      flash.now[:errors] = ["Invalid username or Password"]
+      flash.now[:errors] = ["Invalid username or password"]
       render :new
     end
   end

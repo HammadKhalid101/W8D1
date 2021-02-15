@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
     before_validation :ensure_session_token
 
+    has_many :subs_modded,
+    foreign_key: :mod_id,
+    class_name: :Sub
     # FIGVAPER
 
     def self.find_by_credentials(username, password)
