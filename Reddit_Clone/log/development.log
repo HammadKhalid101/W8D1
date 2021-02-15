@@ -35,3 +35,7 @@ Migrating to CreateUsers (20210215152540)
   ↳ bin/rails:9
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (915.5ms)[0m  [1m[35mCREATE DATABASE "Reddit_Clone_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (232.2ms)[0m  [1m[35mCREATE DATABASE "Reddit_Clone_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
