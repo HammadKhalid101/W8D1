@@ -11,6 +11,3 @@
 <% if current_user.id == @post.author_id %>
     <a href="<%= edit_post_url %>">Edit Post</a>
 <% end %>
-
-
-<a href="<%= sub_url(@post.sub) %>">Go back to <%= @post.sub.title %></a>

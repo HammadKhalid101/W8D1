@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 class Post < ApplicationRecord
-    validates :title, :sub_id, :author_id, presence: true
+    validates :title, :author_id, presence: true
 
     # belongs_to :sub,
     # foreign_key: :sub_id,
@@ -22,6 +22,8 @@ class Post < ApplicationRecord
     class_name: :User
 
     has_many :post_subs,
+    dependent: :destroy,
+    inverse_of: :post,
     foreign_key: :post_id,
     class_name: :PostSub
 
