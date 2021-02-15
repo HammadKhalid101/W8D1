@@ -1,14 +1,14 @@
 class PostsController < ApplicationController
     
+    before_action :require_poster, only: [:edit, :update, :destroy]
+
     def new
         @post = Post.new
-        @post.sub_id = params[:sub_id]
         render :new
     end
 
     def create
         @post = Post.new(post_params)
-        @post.sub_id = params[:sub_id]
         if @post.save
             redirect_to post_url(@post)
         else

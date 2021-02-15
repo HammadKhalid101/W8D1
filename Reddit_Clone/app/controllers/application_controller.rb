@@ -33,4 +33,14 @@ class ApplicationController < ActionController::Base
         sub = Sub.find_by(id: params[:id])
         current_user == sub.moderator
     end
+
+    def is_poster?
+        post = Post.find_by(id: params[:id])
+        current_user == post.author
+    end
+
+    def require_poster
+        redirect_to subs_url unless is_poster?
+    end
+
 end

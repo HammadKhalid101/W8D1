@@ -10,3 +10,13 @@
     </ul>
 
 <a href="<%=new_sub_url%>">Create a New Sub</a>
+
+
+<h2>List of <%= @user.username%>'s Posts</h2>
+    <ul>    
+        <% @user.posts.each do |post| %>
+            <li>
+                <a href="<%= post_url(post) %>"><%= post.title %></a>
+            </li>
+        <% end %>
+    </ul>

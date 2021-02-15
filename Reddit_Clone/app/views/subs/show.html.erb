@@ -11,3 +11,15 @@
 <a href="<%=edit_sub_url%>">Edit Sub</a>
 <% end %>
 <p>list of posts to follow</p>
+
+<ul>
+<% @sub.posts.each do |post| %>
+  <li>
+    <a href="<%= post_url(post) %>"><%= post.title %></a> 
+  </li>
+<% end %>
+</ul>
+
+<% if logged_in? %>
+    <a href="<%= new_post_url %>">Create a new Post</a>
+<% end %>

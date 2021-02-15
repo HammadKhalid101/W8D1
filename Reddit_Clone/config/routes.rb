@@ -16,8 +16,6 @@
 #                           PUT    /session(.:format)                                                                       sessions#update
 #                           DELETE /session(.:format)                                                                       sessions#destroy
 #                           POST   /session(.:format)                                                                       sessions#create
-#                 sub_posts POST   /subs/:sub_id/posts(.:format)                                                            posts#create
-#              new_sub_post GET    /subs/:sub_id/posts/new(.:format)                                                        posts#new
 #                      subs GET    /subs(.:format)                                                                          subs#index
 #                           POST   /subs(.:format)                                                                          subs#create
 #                   new_sub GET    /subs/new(.:format)                                                                      subs#new
@@ -26,6 +24,7 @@
 #                           PATCH  /subs/:id(.:format)                                                                      subs#update
 #                           PUT    /subs/:id(.:format)                                                                      subs#update
 #                           DELETE /subs/:id(.:format)                                                                      subs#destroy
+#                     posts POST   /posts(.:format)                                                                         posts#create
 #                  new_post GET    /posts/new(.:format)                                                                     posts#new
 #                 edit_post GET    /posts/:id/edit(.:format)                                                                posts#edit
 #                      post GET    /posts/:id(.:format)                                                                     posts#show
@@ -44,7 +43,7 @@ Rails.application.routes.draw do
   resources :users 
   resource :session
   resources :subs do
-    resources :posts, only:[:new, :create]
+    # resources :posts, only:[:new, :create]
   end
-  resources :posts, except:[ :new, :index, :create]
+  resources :posts, except:[:index]
 end
