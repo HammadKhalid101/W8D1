@@ -12,6 +12,7 @@
   <header>
     <nav>
     <% if logged_in? %>
+      <a href="<%=user_url(current_user)%>"><%=current_user.username%></a>
       <form action="<%= session_url %>" method = "POST">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="_method" value="DELETE">
@@ -22,6 +23,7 @@
 
       <a href="<%=new_session_url%>">Sign In</a>
     <% end %>
+    <a href="<%= subs_url %>">All Subs</a>
     </nav>
   </header>
 

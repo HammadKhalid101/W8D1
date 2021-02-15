@@ -1,1 +1,12 @@
 <h1>Welcome to <%= @user.username%>'s Page</h1>
+
+<h2>List of <%= @user.username%>'s Subs</h2>
+    <ul>
+    
+    <% @user.subs_modded.each do |sub| %>
+        <li><a href="<%= sub_url(sub)%>"><%= sub.title %></a><a class = "edit-sub-button" href="<%= edit_sub_url(sub) %>">Edit Sub</a></li>
+    <% end %>
+    
+    </ul>
+
+<a href="<%=new_sub_url%>">Create a New Sub</a>

@@ -1,0 +1,13 @@
+<h1><%= @sub.title %></h1>
+
+<h4>Moderated by: <%= @sub.moderator.username %></h4>
+
+<h4>Description:</h4>
+<p><%= @sub.description%></p>
+
+<br>
+
+<% if is_moderator? %>
+<a href="<%=edit_sub_url%>">Edit Sub</a>
+<% end %>
+<p>list of posts to follow</p>
