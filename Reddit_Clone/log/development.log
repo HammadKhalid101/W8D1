@@ -39,3 +39,103 @@ Migrating to CreateUsers (20210215152540)
   ↳ bin/rails:9
   [1m[35m (232.2ms)[0m  [1m[35mCREATE DATABASE "Reddit_Clone_test" ENCODING = 'unicode'[0m
   ↳ bin/rails:9
+Started GET "/session/new" for ::1 at 2021-02-15 11:18:33 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/hammad/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+Started GET "/" for ::1 at 2021-02-15 11:18:35 -0500
+Completed 200 OK in 2272ms (Views: 2214.3ms | ActiveRecord: 3.6ms)
+
+
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hammad/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hammad/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.5/lib/rails/templates/rails/welcome/index.html.erb (1.0ms)
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2021-02-15 11:18:41 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 341ms (Views: 339.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for ::1 at 2021-02-15 11:26:51 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 339ms (Views: 338.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/new" for ::1 at 2021-02-15 11:26:54 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 343ms (Views: 342.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2021-02-15 11:26:59 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"57S6zCkRUnSTLs3V9G7u6KLCtQ2b5xCRXhI+XwvPKGUkt0C6+FEHhBTM+K/yxCsZ00ljqBsd3IVOwzpvd+tQSQ==", "user"=>{"username"=>"faff", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "faff"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "HZO0fSJYrF2nVejCZEuNaA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "faff"], ["password_digest", "$2a$12$cpP2Jg91YW7mzbinF16F5.Vt3nvNLKa.vmBx.LyeYRj/5kzvoUki2"], ["session_token", "HZO0fSJYrF2nVejCZEuNaA"], ["created_at", "2021-02-15 16:27:00.020062"], ["updated_at", "2021-02-15 16:27:00.020062"]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "faff"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "j-TXxb35a9wa8_-iAw9auw"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "j-TXxb35a9wa8_-iAw9auw"], ["updated_at", "2021-02-15 16:27:00.027612"], ["id", 1]]
+  ↳ app/models/user.rb:37
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:37
+Redirected to http://localhost:3000/users
+Completed 302 Found in 194ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/users" for ::1 at 2021-02-15 11:27:00 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 356ms (Views: 355.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/new" for ::1 at 2021-02-15 11:27:07 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 329ms (Views: 329.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2021-02-15 11:27:10 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"+ps8v+7Sx1iYjGntxtQ8skt5uROP/QSpDezU1rwjSmM5mMbJP5KSqB9uXJfAfvlDOvJvtg8HyL0dPdDmwAcyTw==", "user"=>{"username"=>"sgvgv", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "sgvgv"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "YoY0zE89uolVokMVy2LN0A"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:10
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 687ms (Views: 345.8ms | ActiveRecord: 1.3ms)
+
+

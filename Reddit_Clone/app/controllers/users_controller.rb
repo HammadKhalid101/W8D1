@@ -30,6 +30,16 @@ class UsersController < ApplicationController
     render :index
   end
 
+  def destroy
+    user = User.find(params[:id])
+    if current_user == user
+        log_out
+        user.destroy
+    end
+
+    redirect_to users_url
+  end
+
   private
 
   def user_params
