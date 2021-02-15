@@ -24,4 +24,13 @@ class ApplicationController < ActionController::Base
     def require_logged_in
         redirect_to new_session_url unless logged_in?
     end
+
+    def require_moderator
+        redirect_to subs_url unless is_moderator?
+    end
+
+    def is_moderator? 
+        sub = Sub.find_by(id: params[:id])
+        current_user == sub.moderator
+    end
 end

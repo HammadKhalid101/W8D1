@@ -16,6 +16,14 @@
 #                           PUT    /session(.:format)                                                                       sessions#update
 #                           DELETE /session(.:format)                                                                       sessions#destroy
 #                           POST   /session(.:format)                                                                       sessions#create
+#                      subs GET    /subs(.:format)                                                                          subs#index
+#                           POST   /subs(.:format)                                                                          subs#create
+#                   new_sub GET    /subs/new(.:format)                                                                      subs#new
+#                  edit_sub GET    /subs/:id/edit(.:format)                                                                 subs#edit
+#                       sub GET    /subs/:id(.:format)                                                                      subs#show
+#                           PATCH  /subs/:id(.:format)                                                                      subs#update
+#                           PUT    /subs/:id(.:format)                                                                      subs#update
+#                           DELETE /subs/:id(.:format)                                                                      subs#destroy
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
@@ -24,7 +32,8 @@
 
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  # get “/subs/:title”, to: “subs#show”
   resources :users 
   resource :session
+  resources :subs
 end
